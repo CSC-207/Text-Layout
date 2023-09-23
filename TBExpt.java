@@ -64,7 +64,7 @@ public class TBExpt {
     TBUtils.print(pen, new Centered(line1, 10));
 
     
-    System.out.println(line1.width());
+    pen.println(line1.width());
 
 
     // Clean up after ourselves.

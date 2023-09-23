@@ -1,5 +1,5 @@
 import static org.junit.Assert.*;   // shorten calls to assert functions
-import org.junit.Before;            // shorten future calls to BeforeClass
+import org.junit.Before;            // shorten future calls to Before
 import org.junit.Test;              // shorten future calls to Test
 
 /**
@@ -23,6 +23,67 @@ public class TextBlockTests {
         testBox = new BoxedBlock(testLine);
     } // setUp()
     
+    /** Test the TBUtils.equal procedure */
+    @Test
+    public void equalTest() {
+        try { // Handle any exceptions in the equal function
+            // Test that the procedure works as intended
+            assert(TBUtils.equal(testEmpty, testEmpty));
+            assert(TBUtils.equal(testLine, testLine));
+            assert(TBUtils.equal(testBox, testBox));
+            // Test that the prcedure works with new objects
+            assert(TBUtils.equal(testLine, new TextLine("Hello")));
+            assert(TBUtils.equal(testBox, new BoxedBlock(testLine)));
+            // Test that the procedure fails as intended
+            assertFalse(TBUtils.equal(testEmpty, testLine));
+            assertFalse(TBUtils.equal(testLine, testBox));
+            assertFalse(TBUtils.equal(testBox, testEmpty));
+
+        } catch (Exception e) {
+            assert(false) : "Exception in equalTest";
+        } // try...catch
+    } // equalTest()
+
+    /** Test the TBUtils.eqv prcocedure */
+    @Test
+    public void eqvTest() {
+        try { // Handle any exceptions in the eqv function
+            // Test that the procedure works as intended
+            assert(TBUtils.eqv(testEmpty, testEmpty));
+            assert(TBUtils.eqv(testLine, testLine));
+            assert(TBUtils.eqv(testBox, testBox));
+            // Test that the prcedure works with new objects
+            assert(TBUtils.eqv(testBox, new BoxedBlock(testEmpty)));
+            assert(TBUtils.eqv(testBox, new BoxedBlock(testLine)));
+            // Test that the procedure fails as intended
+            assertFalse(TBUtils.eqv(testLine, testBox));
+            assertFalse(TBUtils.eqv(testBox, testEmpty));
+
+        } catch (Exception e) {
+            assert(false) : "Exception in eqvTest";
+        } // try...catch
+    } // eqvTest()
+
+    /** Test the TBUtils.eq procedure */
+    @Test
+    public void eqTest() {
+        try { // Hanfle any exception in the eq funcition
+            // Test that the procedure works as intended
+            assert(TBUtils.eq(testEmpty, testEmpty));
+            assert(TBUtils.eq(testLine, testLine));
+            assert(TBUtils.eq(testBox, testBox));
+            // Test that the procedure fails as intended
+            assertFalse(TBUtils.eq(testEmpty, testLine));
+            assertFalse(TBUtils.eq(testLine, testBox));
+            assertFalse(TBUtils.eq(testBox, testEmpty));
+            // Test that the prcedure fails with new objects
+            assertFalse(TBUtils.eq(testLine, new TextLine("Hello")));
+            assertFalse(TBUtils.eq(testBox, new BoxedBlock(testLine)));
+        } catch (Exception e) {
+            assert(false) : "Exception in eqTest";
+        }
+    } // eqTest()
+
     /** Test the Truncated class */
     @Test
     public void truncateTest() {
