@@ -66,8 +66,6 @@ public class TBExpt {
     
     pen.println(line1.width());
 
-    TBUtils.print(pen, new SquareBlock(new BoxedBlock(comp1), new BoxedBlock(line2)));
-
 
     // Clean up after ourselves.
     pen.close();
