@@ -18,11 +18,11 @@ public class Truncated implements TextBlock {
     // | Constructors |
     // +--------------+---------------------------------------------------
 
-    /** Build a new line with contents `_contents` */
+    /** Build a new block with contents _contents and width `w` */
     public Truncated(TextBlock _contents, int _w) {
         this.contents = _contents;
         this.w = _w;
-    } // Truncated(TextBlock)
+    } // Truncated(TextBlock, int)
 
     // +---------+--------------------------------------------------------
     // | Methods |
@@ -45,7 +45,7 @@ public class Truncated implements TextBlock {
                 // Determine the number of spaces to pad the row
                 int n = this.w - this.contents.width();
                 // Pad the row and return the truncated string
-                return this.contents.row(i) + " ".repeat(n);
+                return this.contents.row(i) + TBUtils.spaces(n);
             } // else
         } // if (valid row)
         // Otherwise, throw an exception describing the error

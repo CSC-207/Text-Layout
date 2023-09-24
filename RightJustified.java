@@ -18,11 +18,11 @@ public class RightJustified implements TextBlock {
     // | Constructors |
     // +--------------+---------------------------------------------------
 
-    /** Build a new line with contents _contents */
+    /** Build a new block with contents _contents and width `w` */
     public RightJustified(TextBlock _contents, int _w) {
         this.contents = _contents;
         this.w = _w;
-    } // RightJustified(TextBlock)
+    } // RightJustified(TextBlock, int)
 
     // +---------+--------------------------------------------------------
     // | Methods |
@@ -45,7 +45,7 @@ public class RightJustified implements TextBlock {
                 // Determine the number of spaces to pad the row
                 int n = this.w - this.contents.width();
                 // Pad the row and return the right justified string
-                return " ".repeat(n) + this.contents.row(i);
+                return TBUtils.spaces(n) + this.contents.row(i);
             } // else
         } // if (valid row)
         // Otherwise, throw an exception describing the error

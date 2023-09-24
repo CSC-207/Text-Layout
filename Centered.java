@@ -18,11 +18,11 @@ public class Centered implements TextBlock {
     // | Constructors |
     // +--------------+---------------------------------------------------
 
-    /** Build a new line with contents _contents */
+    /** Build a new block with contents _contents and width `w` */
     public Centered(TextBlock _contents, int _w) {
         this.contents = _contents;
         this.w = _w;
-    } // Centered(TextBlock)
+    } // Centered(TextBlock, int)
 
     // +---------+--------------------------------------------------------
     // | Methods |
@@ -45,9 +45,9 @@ public class Centered implements TextBlock {
                 // Determine the number of spaces to pad the row
                 int n = (this.w - this.contents.width()) / 2;
                 // Pad the row and return the centered string
-                return ((this.w - this.contents.width() )% 2 == 1)
-                    ? " ".repeat(n+1) + this.contents.row(i) + " ".repeat(n)
-                    : " ".repeat(n) + this.contents.row(i) + " ".repeat(n);
+                return ((this.w - this.contents.width()) % 2 == 1)
+                    ? TBUtils.spaces(n+1) + this.contents.row(i) + TBUtils.spaces(n)
+                    : TBUtils.spaces(n) + this.contents.row(i) + TBUtils.spaces(n);
             } // else
         } // if (valid row)
         // Otherwise, throw an exception describing the error

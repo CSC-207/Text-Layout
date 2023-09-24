@@ -126,6 +126,27 @@ public class TextBlockTests {
         } // try...catch
     } // centerTest()
 
+    /** Test the TruncatedHeight class */
+    @Test
+    public void truncateHeightTest() {
+        try { // Handle any exceptions in the equal function 
+            // Define TruncatedHeight objects
+            TextBlock testEmptyTH = new TruncatedHeight(testEmpty, 1);
+            TextBlock testBoxTH = new TruncatedHeight(testBox, 3);
+            
+            // Test that the procedure works as intended
+            assert(TBUtils.equal(testEmpty, testEmptyTH));
+            assert(TBUtils.equal(testBox, testBoxTH));
+            assert(TBUtils.equal(testLine, new TruncatedHeight(testLine, 1)));
+            // Test that the procedure fails as intended
+            assertFalse(TBUtils.equal(testLine, new TruncatedHeight(testLine, 0)));
+            assertFalse(TBUtils.equal(testLine, new TruncatedHeight(testLine, 2)));
+        
+        } catch (Exception e) {
+            assert(false) : "Exception in rightJustifyTest";
+        } // try...catch
+    } // truncateHeightTest()
+
     /** Test the RightJustified class */
     @Test
     public void rightJustifyTest() {

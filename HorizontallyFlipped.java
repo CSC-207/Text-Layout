@@ -15,7 +15,7 @@ public class HorizontallyFlipped implements TextBlock {
     // | Constructors |
     // +--------------+----------------------------------------------
 
-    /** Build a new line with contents _contents */
+    /** Build a new block with contents _contents */
     public HorizontallyFlipped(TextBlock _contents) {
         this.contents = _contents;
     } // HorizontallyFlipped(TextBlock)

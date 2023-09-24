@@ -5,7 +5,10 @@ An extension of the text layout / text block example lab.
 Samuel A. Rebelsky and Albert-Kenneth Okine
 
 # Description
-Truncated, Centered, and RightJustified: Take a TextBlock and a width as input, then return
+Truncated, Centered, and RightJustified: Take a TextBlock and a width as input, then return it according to the operation.
+
+TruncatedHeight: Take a TextBlock and a height as input,
+then return it, then return it truncated height-wise.
 
 HorizontallyFlipped and VerticallyFlipped: Take a TextBlock and return it, flipped.
 
