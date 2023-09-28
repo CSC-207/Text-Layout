@@ -1,3 +1,4 @@
+package textblock;
 /**
  * A text block surrounded by a box.
  *

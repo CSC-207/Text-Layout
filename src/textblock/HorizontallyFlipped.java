@@ -1,9 +1,10 @@
+package textblock;
 /** 
- * Rearrange the text blocks vertically.
+ * Rearrange the text blocks horizontally.
  * 
  * @author Albert-Kenneth Okine
  */
-public class VerticallyFlipped implements TextBlock {
+public class HorizontallyFlipped implements TextBlock {
     // +--------+----------------------------------------------------
     // | Fields |
     // +--------+----------------------------------------------------
@@ -16,9 +17,9 @@ public class VerticallyFlipped implements TextBlock {
     // +--------------+----------------------------------------------
 
     /** Build a new line with contents _contents */
-    public VerticallyFlipped(TextBlock _contents) {
+    public HorizontallyFlipped(TextBlock _contents) {
         this.contents = _contents;
-    } // VerticallyFlipped(TextBlock)
+    } // HorizontallyFlipped(TextBlock)
 
     // +---------+---------------------------------------------------
     // | Methods |
@@ -33,9 +34,11 @@ public class VerticallyFlipped implements TextBlock {
     public String row(int i) throws Exception {
         // Check if index i is in the valid range
         if ((i >= 0) && (i < this.contents.height())) {
-            // Return the vertically flipped row
-            return this.contents.row(this.contents.height() - i - 1);
-        } // if (valid row index)
+            // Use the StringBuilder class to make reversing easier
+            StringBuilder str = new StringBuilder(this.contents.row(i));
+            // Return the row, horizontally flipped
+            return str.reverse().toString();
+        } // if (valid row number)
         // Otherwise, throw an exception describing the error
         else throw new Exception("Invalid row " + i);
     } // row(int)
@@ -49,4 +52,4 @@ public class VerticallyFlipped implements TextBlock {
     public int width() {
         return this.contents.width();
     } // width()
-} // class VerticallyFlipped
+} // class HorizontallyFlipped

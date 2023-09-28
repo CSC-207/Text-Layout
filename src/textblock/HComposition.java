@@ -1,3 +1,4 @@
+package textblock;
 /**
  * The horizontal composition of two text blocks.
  * 

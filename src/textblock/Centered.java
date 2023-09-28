@@ -1,28 +1,29 @@
+package textblock;
 /**
- * Given a text block and a maximum width, builds a new block that
- * truncates the input block to that width.
+ * Given a text block and a width, builds a new block that
+ * centers the block within that width.
  * 
  * @author Albert-Kenneth Okine
  */
-public class Truncated implements TextBlock {
+public class Centered implements TextBlock {
     // +--------+---------------------------------------------------------
     // | Fields |
     // +--------+---------------------------------------------------------
 
     /** The stuff in the box */
     TextBlock contents;
-    /** The maximum width of the box contents */
+    /** The width of the box */
     int w;
 
     // +--------------+---------------------------------------------------
     // | Constructors |
     // +--------------+---------------------------------------------------
 
-    /** Build a new block with contents _contents and width `w` */
-    public Truncated(TextBlock _contents, int _w) {
+    /** Build a new line with contents _contents */
+    public Centered(TextBlock _contents, int _w) {
         this.contents = _contents;
         this.w = _w;
-    } // Truncated(TextBlock, int)
+    } // Centered(TextBlock)
 
     // +---------+--------------------------------------------------------
     // | Methods |
@@ -31,21 +32,23 @@ public class Truncated implements TextBlock {
     /**
      * Get one row from the block.
      * 
-     * @pre 0 <= 1 < this.height()
+     * @pre 0 <= i < this.height()
      * @exception Exception if the precondition is not met
      */
     public String row(int i) throws Exception {
         // Check if index i is in the valid range
         if ((i >= 0) && (i < this.contents.height())) {
-            if (this.contents.width() > this.w) {
+            if (this.contents.width() >= this.w) {
                 // Extract an appropriate length substring of the row
                 return this.contents.row(i).substring(0, this.w);
-            } // if (contents width is greater than this.w)
+            } // if (contents' width is greater than this.w)
             else {
                 // Determine the number of spaces to pad the row
-                int n = this.w - this.contents.width();
-                // Pad the row and return the truncated string
-                return this.contents.row(i) + TBUtils.spaces(n);
+                int n = (this.w - this.contents.width()) / 2;
+                // Pad the row and return the centered string
+                return ((this.w - this.contents.width() )% 2 == 1)
+                    ? " ".repeat(n+1) + this.contents.row(i) + " ".repeat(n)
+                    : " ".repeat(n) + this.contents.row(i) + " ".repeat(n);
             } // else
         } // if (valid row)
         // Otherwise, throw an exception describing the error
@@ -61,4 +64,4 @@ public class Truncated implements TextBlock {
     public int width() {
         return this.w;
     } // width()
-} // class Truncated
+} // class Centered

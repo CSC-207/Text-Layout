@@ -1,3 +1,4 @@
+package textblock;
 import java.io.PrintWriter;
 
 /**
@@ -64,7 +65,7 @@ public class TBExpt {
     TBUtils.print(pen, new Centered(line1, 10));
 
     
-    pen.println(line1.width());
+    System.out.println(line1.width());
 
 
     // Clean up after ourselves.
